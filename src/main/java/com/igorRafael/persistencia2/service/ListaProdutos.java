@@ -1,27 +1,24 @@
 package com.igorRafael.persistencia2.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
-import com.igorRafael.persistencia2.entity.Produto;
 import com.igorRafael.persistencia2.repository.ProdutoDAO;
 
 @Service
-public class TodosOsProdutos {
-
+public class ListaProdutos {
 	
 	@Autowired
-	private ProdutoDAO dao;
+	ProdutoDAO dao;
 	
-	public List<Produto> findAllProdutos(){
+	public String listaProdutos() {
 		
-		List<Produto> result = dao.findAll();
+		ModelMap model = new ModelMap();
 		
-		return result;
+		model.addAttribute("produtos", dao.findAll());
 		
+		return "listaProdutos";
 	}
-	
 
 }
