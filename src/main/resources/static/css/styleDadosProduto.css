@@ -1,0 +1,16 @@
+label{
+    display: inline-block;
+    width: 100px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+input{
+    width: 150px;
+    background-color: lightyellow;
+}
+
+button{
+    margin: 6px;
+    width: 265px;
+}

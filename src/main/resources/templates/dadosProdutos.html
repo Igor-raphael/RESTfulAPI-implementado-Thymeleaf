@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Dragonite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styleDadosProduto.css}">
+    <title>Cadastro de Produto</title>
 </head>
 <body>
+    <h1>Dados do Produto</h1>
 
+        <form th:action="@{/web/produtos/dadosProduto}" method="post">
 
+           <label for="codigo">Código:</label>
+           <input id="codigo" type="number" th:field="${produto.codigo}"
+                th:if="${produto.getCodigo()==null}"/>
+
+           <span th:if="${produto.getCodigo()!=null}">
+                <input id="codigo" type="hidden" th:field="${produto.codigo}"/>
+                <span th:text="${produto.getCodigo()}"> codigo </span>
+           </span>  
+           <br/>   
+           
+           <label for="quantidade">Quantidade:</label>
+           <input id="quantidade" type="number" th:field="${produto.quantidade}"/>
+           <br/>
+
+           <button type="submit"> Salvar </button>
+    </form>
+    
 </body>
 </html>

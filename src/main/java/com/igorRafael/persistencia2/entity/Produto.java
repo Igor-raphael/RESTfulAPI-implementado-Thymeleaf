@@ -26,11 +26,11 @@ public class Produto {
 	}
 
 	
-	public Integer getId() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setId(Integer id) {
+	public void setCodigo(Integer id) {
 		this.codigo = id;
 	}
 

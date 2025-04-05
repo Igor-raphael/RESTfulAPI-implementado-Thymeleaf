@@ -2,6 +2,7 @@ package com.igorRafael.persistencia2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,13 +38,15 @@ public class ProdutoController {
 	private AdicionarProduto add;
 	
 	
+	
 	@GetMapping("/dadosProduto")
 	public ModelAndView dadosProdutos() {
 		return data.dadosProdutos();
 	}
 	
 	@GetMapping("/listaProdutos")
-	public String listaProdutos() {
+	public String listaProdutos(ModelMap model) {
+		model.addAttribute("produtos", list.findAll());
 		return list.listaProdutos();
 	}
 	
@@ -52,13 +55,23 @@ public class ProdutoController {
 		return search.busca(codigo);
 	}
 	
+	
+	
 	@PostMapping("novoProduto")
-	public String novoProduto(@RequestBody Produto produto) {
+	public String novoProduto(@RequestBody Produto produto, ModelMap model) {
+		
+		model.addAttribute("produtos", add.findAll());
+		
 		return add.adicionar(produto);
 	}
 	
+	
+	
 	@DeleteMapping("/removerProduto/{codigo}")
-	public String removerProduto(@PathVariable("codigo") Integer codigo) {
+	public String removerProduto(@PathVariable("codigo") Integer codigo, ModelMap model) {
+		
+		model.addAttribute("produtos", delete.findAll());
+		
 		return delete.removeProduto(codigo);
 	}
     
