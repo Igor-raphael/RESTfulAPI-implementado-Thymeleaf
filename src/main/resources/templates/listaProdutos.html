@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="stylesheet" th:href="@{/css/Style.css}">
-<title>Listagem de Produtos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/Style.css}">
+    <title>Listagem de produtos</title>
 </head>
 <body>
+    <h1>Produtos</h1>
 
-<h1>Produtos</h1>
+    <p> <a th:href="@{/web/produtos/dadosProduto}">Novo Produto</a> </p>
 
+    <div class="container">
+        <div class="pnlProduto" th:each="produto : ${produtos}">
+        <span th:text="${produto.getNome()}">Valor</span><br/>
+        Código: <span th:text="${produto.getCodigo()}"></span><br/>
+        Quantidade: <span th:text="${produto.getQuantidade()}">Valor</span>
+        <hr/>
 
+        <a th:href="@{/web/produtos/removerProduto/(codigo=${produto.getCodigo()})}">
+            Excluir
+        </a>
+
+        <a th:href="@{/web/produtos/dadosProduto/{codigo}(codigo=${produto.getCodigo()})}">
+            Alterar
+        </a>
+
+        </div>
+    </div>
 </body>
 </html>

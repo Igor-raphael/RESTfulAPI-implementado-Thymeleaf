@@ -57,8 +57,8 @@ public class ProdutoController {
 		return add.adicionar(produto);
 	}
 	
-	@DeleteMapping("/removerProduto")
-	public String removerProduto(Integer codigo) {
+	@DeleteMapping("/removerProduto/{codigo}")
+	public String removerProduto(@PathVariable("codigo") Integer codigo) {
 		return delete.removeProduto(codigo);
 	}
     
